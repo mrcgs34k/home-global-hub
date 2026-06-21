@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简明指南 · 开云访问与认知页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f6fa;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* hero 区 — 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle at 70% 40%, rgba(99, 102, 241, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #f1f5f9;
+    }
+
+    .hero h1 span {
+      color: #a5b4fc;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      opacity: 0.85;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #c7d2fe;
+      border: 1px solid rgba(165, 180, 252, 0.25);
+      backdrop-filter: blur(4px);
+      margin-top: 0.5rem;
+    }
+
+    /* 通用容器 */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* 优势区 (浅色正文) */
+    .section {
+      padding: 3.5rem 0 2.5rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: #0f172a;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 48px;
+      height: 4px;
+      background: #6366f1;
+      border-radius: 4px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid #eef2f6;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #1e293b;
+    }
+
+    .card p {
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    .card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.6rem;
+      display: inline-block;
+    }
+
+    /* 说明区 / 场景 + 提醒 */
+    .split-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .split-layout > div {
+      flex: 1 1 280px;
+    }
+
+    .reminder-box {
+      background: #eef2ff;
+      border-left: 5px solid #6366f1;
+      padding: 1.6rem 1.8rem;
+      border-radius: 12px;
+      margin: 1.8rem 0 0;
+    }
+
+    .reminder-box h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1e1b4b;
+    }
+
+    .reminder-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .reminder-box li {
+      padding: 0.3rem 0;
+      font-size: 0.95rem;
+      color: #1e293b;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .reminder-box li::before {
+      content: '•';
+      color: #6366f1;
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e9edf2;
+    }
+
+    .faq-item {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #e9edf2;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .faq-question::before {
+      content: 'Q';
+      background: #6366f1;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      color: #475569;
+      font-size: 0.93rem;
+      margin-left: 1.8rem;
+      margin-top: 0.1rem;
+    }
+
+    /* 底部链接 */
+    .footer-links {
+      background: #1e293b;
+      color: #cbd5e1;
+      padding: 2.5rem 0 2rem;
+      margin-top: 2rem;
+    }
+
+    .footer-links .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .footer-links a {
+      color: #a5b4fc;
+      text-decoration: none;
+      border-bottom: 1px dotted transparent;
+      transition: border-color 0.2s;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #a5b4fc;
+    }
+
+    .footer-links .legal {
+      font-size: 0.85rem;
+      opacity: 0.75;
+    }
+
+    .inline-link {
+      color: #6366f1;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .inline-link:hover {
+      color: #4f46e5;
+      border-bottom-color: #4f46e5;
+    }
+
+    /* 响应式 */
+    @media (max-width: 860px) {
+      .grid-3 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .split-layout {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .faq-summary {
+        padding: 1.5rem;
+      }
+
+      .footer-links .container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>关于 <span>开云</span> 的简明指南</h1>
+      <p>一个平实的信息汇集 —— 帮助你快速了解访问要点、常见疑问与使用背景。</p>
+      <div class="tagline">🔍 基于实际使用场景整理 · 非官方</div>
+    </div>
+  </section>
+
+  <!-- 优势区 / 三个特征卡片 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">实际使用中的特点</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">🧭</div>
+          <h3>访问指引清晰</h3>
+          <p>域名结构稳定，不同网络环境下均可通过标准方式进入。建议将常用页面加入书签以提升返回效率。</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔄</div>
+          <h3>信息更新规律</h3>
+          <p>内容板块按照固定周期维护，部分栏目会随版本迭代调整位置。留意界面右上角的通知区域可获取最新动态。</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔐</div>
+          <h3>基础安全提示</h3>
+          <p>始终通过浏览器地址栏手动输入或使用已保存的准确链接，避免通过第三方搜索结果中的不明地址跳转。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 说明区 + 访问提醒 (split) -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="split-layout">
+        <div>
+          <h2 class="section-title" style="margin-bottom: 1.2rem;">常见使用场景</h2>
+          <p style="margin-bottom: 1.2rem; color: #334155;">
+            无论你是初次接触还是已有一定使用经历，<a href="https://home-global-ky.com" class="inline-link">开云</a> 所提供的功能入口均保持一致的布局逻辑。  
+            多数用户会在以下情境中访问：信息检索、服务入口查询、以及日常操作面板的快速调取。  
+            各功能模块之间切换流畅，且页面底部通常提供辅助导航。建议在访问前确认网络连接稳定，以免加载中断。
+          </p>
+          <p style="color: #475569;">
+            对于新用户，推荐先浏览首页中部的“开始使用”区域，其中包含分步骤说明。如果你已经熟悉界面，可直接通过顶部菜单进入目标页面。
+          </p>
+        </div>
+        <div>
+          <div class="reminder-box">
+            <h4>访问提醒 · 请留心</h4>
+            <ul>
+              <li>核对地址栏域名是否为 <strong>home-global-ky.com</strong></li>
+              <li>避免使用未经验证的镜像站或快捷链接</li>
+              <li>登录或操作前确认页面已启用 HTTPS</li>
+              <li>如果遇到页面样式异常，请先清除浏览器缓存再试</li>
+              <li>官方不会通过弹窗索要你的密码或验证码</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ 摘要 -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <h2 class="section-title">常见问题摘要</h2>
+      <div class="faq-summary">
+        <div class="faq-item">
+          <div class="faq-question">访问时提示“连接不安全”怎么办？</div>
+          <div class="faq-answer">首先确认网址前缀为 https，如果仍然出现警告，可能是本地系统时间不准确或证书缓存异常，尝试同步时间后重新加载页面。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">页面加载后部分功能按钮不显示？</div>
+          <div class="faq-answer">建议使用最新版 Chrome、Edge 或 Firefox 浏览器。另外检查是否有广告拦截插件误伤页面组件，可暂时禁用后刷新。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">如何确认我访问的是否为最新版本？</div>
+          <div class="faq-answer">页面底部通常显示版本编号和更新日期。你也可以直接通过 <a href="https://home-global-ky.com" class="inline-link">开云</a> 首页的公告区域进行核对。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">是否支持移动端浏览器？</div>
+          <div class="faq-answer">支持。界面采用响应式设计，在手机和平板设备上会自动适配为单栏布局，所有核心功能均可正常使用。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部链接 -->
+  <footer class="footer-links">
+    <div class="container">
+      <div>
+        <span style="font-weight: 500;">相关资源</span>
+        <span style="margin: 0 0.5rem;">·</span>
+        <a href="https://home-global-ky.com">开云</a>
+        <span style="margin: 0 0.5rem; opacity: 0.4;">|</span>
+        <a href="#" style="opacity: 0.7;">帮助中心</a>
+        <span style="margin: 0 0.5rem; opacity: 0.4;">|</span>
+        <a href="#" style="opacity: 0.7;">状态页面</a>
+      </div>
+      <div class="legal">
+        © 本页仅为信息汇总 · 非官方运营方 · 内容仅供参考
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
