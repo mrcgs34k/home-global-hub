@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 资讯汇集</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #faf7f2;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      color: #2c2c2c;
+      line-height: 1.7;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fffcf9;
+      border-radius: 32px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      padding: 2.8rem 2.5rem;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem;
+      }
+      .wrap {
+        padding: 1.8rem 1.2rem;
+        border-radius: 20px;
+      }
+    }
+
+    /* hero */
+    .hero {
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 520;
+      letter-spacing: 0.02em;
+      color: #1f1f1f;
+      line-height: 1.3;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #4b4b4b;
+      max-width: 70%;
+      border-left: 4px solid #d9c8b2;
+      padding-left: 1.3rem;
+      margin-top: 0.3rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        max-width: 100%;
+        font-size: 1rem;
+      }
+    }
+
+    /* 通用区块 */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #2e2e2e;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title::before {
+      content: '▹';
+      color: #b3957a;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: #f6f1ea;
+      border-radius: 20px;
+      padding: 1.5rem 1.6rem;
+      transition: background 0.2s;
+    }
+
+    .card:hover {
+      background: #efe7dd;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #2a2a2a;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #4f4f4f;
+    }
+
+    .explain-text {
+      font-size: 1rem;
+      color: #3b3b3b;
+      background: #f4eee7;
+      padding: 1.6rem 1.8rem;
+      border-radius: 24px;
+      line-height: 1.8;
+      margin-top: 0.8rem;
+    }
+
+    .explain-text strong {
+      color: #1f1f1f;
+      font-weight: 500;
+    }
+
+    .quote-block {
+      background: #ece4da;
+      border-radius: 24px;
+      padding: 1.6rem 2rem;
+      margin: 1.8rem 0;
+      font-style: normal;
+      border-left: 6px solid #a88c74;
+      color: #2c2c2c;
+    }
+
+    .quote-block p {
+      margin-bottom: 0.6rem;
+    }
+
+    .quote-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e2d8ce;
+      padding: 1.2rem 0;
+    }
+
+    .faq-item:first-of-type {
+      padding-top: 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #1f1f1f;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-a {
+      font-size: 0.95rem;
+      color: #4e4e4e;
+    }
+
+    .bottom-links {
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #e2d8ce;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem 0.8rem;
+      font-size: 0.95rem;
+      color: #4b4b4b;
+    }
+
+    .bottom-links a {
+      color: #3c3c3c;
+      text-decoration: none;
+      border-bottom: 1px solid #b3957a;
+      padding-bottom: 0.1rem;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .bottom-links a:hover {
+      color: #1f1f1f;
+      border-bottom-color: #1f1f1f;
+    }
+
+    .inline-link {
+      color: #3c3c3c;
+      text-decoration: none;
+      border-bottom: 1px solid #b3957a;
+      padding-bottom: 0.1rem;
+      font-weight: 470;
+    }
+
+    .inline-link:hover {
+      border-bottom-color: #1f1f1f;
+      color: #1f1f1f;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e3d7cb;
+      padding: 0.15rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      color: #2c2c2c;
+      letter-spacing: 0.3px;
+      margin-right: 0.3rem;
+    }
+
+    .footnote {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #7a6f65;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- hero 区 -->
+  <div class="hero">
+    <h1>发现 · <span>爱游戏</span></h1>
+    <p>从行业资讯到深度解读，一个更聚焦的内容站点正在被更多人用作日常参考。</p>
+  </div>
+
+  <!-- 优势区：快速识别用途 -->
+  <section>
+    <div class="section-title">为什么越来越多读者选择这里</div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>信息结构清晰</h3>
+        <p>没有杂乱模块，首页即展示分类与要点，读者可在数秒内判断是否匹配自己的兴趣。</p>
+      </div>
+      <div class="card">
+        <h3>内容有来源可溯</h3>
+        <p>每篇文章均保留原始出处或分析逻辑，方便延伸阅读与交叉验证。</p>
+      </div>
+      <div class="card">
+        <h3>更新节奏稳定</h3>
+        <p>保持按周更新的内容流，既不轰炸信息，也不让常客感到沉寂。</p>
+      </div>
+      <div class="card">
+        <h3>视觉干扰少</h3>
+        <p>采用偏柔和的分区与留白，让注意力停留在文字本身，而非页面动效。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 说明区：从用户快速识别角度切入 -->
+  <section>
+    <div class="section-title">这个网站适合哪些场景</div>
+    <div class="explain-text">
+      <p><strong>想快速判断网站是否对口？</strong> 首页的标题分区与摘要能直接反映内容侧重，不需要层层翻阅。比如当你搜索“游戏产业分析”或“行业趋势”时，<a href="https://newssite-igame.com" class="inline-link">爱游戏</a> 的首页会以简明段落呈现当前关注的话题，而非笼统的欢迎语。</p>
+      <p style="margin-top:0.8rem;"><strong>阅读习惯偏传统？</strong> 页面结构接近杂志或专栏式排版，段落之间留出自然停顿，重要观点用引用块或提示框单独强调，降低连续阅读的疲劳感。</p>
+    </div>
+
+    <div class="quote-block">
+      <p>“我不需要花里胡哨的入口，打开页面就能看到今天有哪些值得读的内容——这是我持续回访的原因。” —— 来自一位早期读者的反馈</p>
+    </div>
+
+    <p style="font-size:0.98rem; color:#4a4a4a; margin-top:1rem;">此外，站内不插入强制弹窗或浮层广告，信息获取路径比较直接。如果你曾因为某些站点过度商业化而感到困扰，这里的体验可能会有所不同。</p>
+  </section>
+
+  <!-- FAQ 摘要 -->
+  <section>
+    <div class="section-title">常见疑问摘要</div>
+    <div class="faq-item">
+      <div class="faq-q">Q：内容主要覆盖哪些领域？</div>
+      <div class="faq-a">A：以游戏产业资讯、产品分析、行业观察为主，偶尔涉及泛娱乐与科技交叉话题。每篇文章均标注分类，便于按兴趣筛选。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q：是否需要注册或订阅？</div>
+      <div class="faq-a">A：目前所有文章均可直接阅读，不设会员墙。部分深度内容可能以系列形式连载，但同样公开可读。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q：更新频率与推送方式？</div>
+      <div class="faq-a">A：通常每周更新 2～4 篇，暂无邮件推送。建议将 <a href="https://newssite-igame.com" class="inline-link">爱游戏</a> 加入书签，或通过 RSS 工具自行跟踪。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q：内容可信度如何？</div>
+      <div class="faq-a">A：编辑团队注重事实核查，转载或引用均标注来源。分析类文章会明确区分事实陈述与个人观点，读者可自行判断。</div>
+    </div>
+  </section>
+
+  <!-- 底部链接区 -->
+  <div class="bottom-links">
+    <div>
+      <span class="tag">资讯</span>
+      <a href="https://newssite-igame.com">爱游戏</a>
+      <span style="margin:0 0.5rem; color:#b8a99a;">·</span>
+      <a href="#">关于本站</a>
+    </div>
+    <div>
+      <a href="#">内容归档</a>
+      <span style="margin:0 0.5rem; color:#b8a99a;">·</span>
+      <a href="#">联系编辑</a>
+    </div>
+  </div>
+
+  <div class="footnote">
+    以阅读为优先 · 无冗余干扰
+  </div>
+
+</div>
+</body>
+</html>
